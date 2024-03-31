@@ -1,0 +1,6 @@
+# A default .gitattributes for Create Go App project.
+# Author: Kent Duong <koddr.me@gmail.com> (https://github.com/koddr)
+# For more information, please visit https://github.com/ghn-toolkit/cli
+
+go.sum merge=union
+*.go text eol=lf
