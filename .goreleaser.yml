@@ -16,17 +16,7 @@ builds:
     id: default
     main: ./cmd/cga/main.go
     env: [ CGO_ENABLED=0 ]
-    goos: [ linux, windows, darwin ]
-    goarch: [ amd64, arm64 ]
-
-upx:
-  -
-    ids: [ default ]
-    enabled: true
-    compress: best
-    lzma: true
-    brute: true
-    goos: [ linux, windows ] # skip darwin (macOS 13.x Ventura is not support now)
+    goos: [ linux, darwin ]
     goarch: [ amd64, arm64 ]
 
 release:
@@ -117,19 +107,12 @@ nfpms:
   -
     maintainer: Kent Duong <duonghominhtu1207@gmail.com>
     description: |
-      Create a new production-ready project with backend (Golang), frontend (JavaScript, TypeScript) and deploy automation (Ansible, Docker) by running one CLI command.
+      Create a new production-ready project with backend (Golang) by running CLI command.
       Focus on writing code and thinking of business-logic! The CLI will take care of the rest.
     homepage: "https://github.com/ghn-toolkit/cli"
     license: Apache 2.0
     formats: [ deb, rpm, apk, archlinux ]
     dependencies: [ git, npm ]
-
-archives:
-  -
-    format_overrides:
-      - goos: windows
-        format: zip
-    files: [ LICENSE, README.md ]
 
 checksum:
   name_template: "checksums.txt"
