@@ -49,19 +49,6 @@ cga deploy
 
 That's all you need to know to start! 🎉
 
-### 🐳 Docker-way to quick start
-
-If you don't want to install Create Go App CLI to your system, you feel free 
-to using our official [Docker image][docker_url] and run CLI from isolated 
-container:
-
-```bash
-docker run --rm -it -v ${PWD}:${PWD} -w ${PWD} koddr/cga:latest [COMMAND]
-```
-
-> 🔔 Please note: the `deploy` command is currently **unavailable** in this 
-> image.
-
 ## 📖 Project Wiki
 
 The best way to better explore all the features of the **Create Go App CLI** 
@@ -85,20 +72,11 @@ cga create [OPTION]
 |--------|----------------------------------------------------------|--------|---------|-----------|
 | `-t`   | Enables to define custom backend and frontend templates. | `bool` | `false` | No        |
 
-```bash
-cga deploy [OPTION]
-```
-
-| Option | Description                                                                                            | Type   | Default | Required? |
-|--------|--------------------------------------------------------------------------------------------------------|--------|---------|-----------|
-| `-k`   | Prompt you to provide the remote user sudo password (_a standard Ansible `--ask-become-pass` option_). | `bool` | `false` | No        |
-
-
 ## 📝 Production-ready project templates
 
 ### Backend
 
-- Backend template with Golang built-in [net/http][net_http_url] package:
+- Backend template with Golang built-in [fe-service][net_http_url] package:
   - [`fe-service`][cga_net-http-template_url] — simple REST API with CRUD 
     and JWT auth.
 
