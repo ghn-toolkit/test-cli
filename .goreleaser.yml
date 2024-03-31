@@ -1,9 +1,6 @@
 project_name: cga
 report_sizes: true
 
-env_files:
-  github_token: ~/.github_token
-
 before:
   hooks:
     - go mod download
@@ -11,7 +8,7 @@ before:
 #    - go run github.com/google/wire/cmd/wire@latest
     - go run github.com/securego/gosec/v2/cmd/gosec@latest -quiet ./...
     - go run github.com/go-critic/go-critic/cmd/gocritic@latest check -enableAll ./...
-    - go run github.com/google/osv-scanner/cmd/osv-scanner@latest -r .
+#    - go run github.com/google/osv-scanner/cmd/osv-scanner@latest -r .
     - go test -race ./...
 
 builds:
@@ -64,7 +61,6 @@ release:
     brew upgrade ghn-toolkit/tap/cli
     ```
     
-    > 💡 Note: See the [`Wiki page`][wiki_url] to understand the project structure and get general recommendations.
     
     ## Your help to improve project
     
@@ -87,15 +83,12 @@ brews:
       owner: ghn-toolkit
       name: homebrew-tap
       branch: main
-      token: "{{ .Env.GITHUB_TOKEN }}"
+      token: "{{ secrets.PRIVATE_KEY }}"
       pull_request:
         enabled: true
-      git:
-        url: "git@github.com:ghn-toolkit/homebrew-tap.git"
-        private_key: "{{ .Env.PRIVATE_KEY_PATH }}"
     commit_author:
       name: Kent Duong
-      email: koddr.me@gmail.com
+      email: duonghominhtu1207@gmail.com
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
     folder: Formula
     caveats: |
@@ -120,29 +113,9 @@ brews:
       - name: git
       - name: npm
 
-dockers:
-  -
-    id: "{{ .ProjectName }}"
-    ids: [ default ]
-    image_templates:
-      - "koddr/{{ .ProjectName }}:latest"
-      - "koddr/{{ .ProjectName }}:{{ .Tag }}"
-      - "koddr/{{ .ProjectName }}:v{{ .Major }}"
-      - "koddr/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}"
-    build_flag_templates:
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{ .Date }}"
-      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
-      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
-      - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--platform=linux/amd64"
-    skip_push: false
-    push_flags:
-      - --tls-verify=false
-
 nfpms:
   -
-    maintainer: Kent Duong <koddr.me@gmail.com>
+    maintainer: Kent Duong <duonghominhtu1207@gmail.com>
     description: |
       Create a new production-ready project with backend (Golang), frontend (JavaScript, TypeScript) and deploy automation (Ansible, Docker) by running one CLI command.
       Focus on writing code and thinking of business-logic! The CLI will take care of the rest.

@@ -1,5 +1,5 @@
 # A default Makefile for Create Go App project.
-# Author: Kent Duong <koddr.me@gmail.com> (https://github.com/koddr)
+# Author: Kent Duong <duonghominhtu1207@gmail.com> (https://github.com/koddr)
 # For more information, please visit https://github.com/ghn-toolkit/cli
 
 .PHONY: test run build
