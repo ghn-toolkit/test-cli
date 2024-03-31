@@ -73,7 +73,7 @@ brews:
       owner: ghn-toolkit
       name: homebrew-tap
       branch: main
-      token: "{{ secrets.PRIVATE_KEY }}"
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
       pull_request:
         enabled: true
     commit_author:

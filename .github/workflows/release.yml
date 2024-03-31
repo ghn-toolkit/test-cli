@@ -22,10 +22,11 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v4
         with:
           distribution: goreleaser
           version: latest
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
+          TAP_GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
