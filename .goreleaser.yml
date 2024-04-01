@@ -76,8 +76,8 @@ brews:
       name: homebrew-tap
       branch: main
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
-      pull_request:
-        enabled: true
+#      pull_request:
+#        enabled: true
     commit_author:
       name: Kent Duong
       email: duonghominhtu1207@gmail.com
