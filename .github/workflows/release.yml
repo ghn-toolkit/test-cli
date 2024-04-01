@@ -1,32 +1,32 @@
-name: release
-
-on:
-  push:
-    tags:
-      - '*'
-
-jobs:
-  release:
-    strategy:
-      matrix:
-        go: [ 'stable' ]
-        os: [ 'ubuntu-latest' ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: ${{ matrix.go }}
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
-          TAP_GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
+#name: release
+#
+#on:
+#  push:
+#    tags:
+#      - '*'
+#
+#jobs:
+#  release:
+#    strategy:
+#      matrix:
+#        go: [ 'stable' ]
+#        os: [ 'ubuntu-latest' ]
+#    runs-on: ${{ matrix.os }}
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+#      - name: Set up Go
+#        uses: actions/setup-go@v4
+#        with:
+#          go-version: ${{ matrix.go }}
+#      - name: Run GoReleaser
+#        uses: goreleaser/goreleaser-action@v4
+#        with:
+#          distribution: goreleaser
+#          version: latest
+#          args: release --clean
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
+#          TAP_GITHUB_TOKEN: ${{ secrets.PRIVATE_KEY }}
